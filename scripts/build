@@ -1,0 +1,118 @@
+#!/usr/bin/env node
+
+require("@babel/register");
+const showdown = require("showdown");
+const showdownHighlight = require("showdown-highlight");
+const fs = require("fs");
+const path = require("path");
+const cheerio = require("cheerio");
+
+const logger = require("./log");
+// const builder = require("./export-template");
+
+const DOC_PATH = path.resolve(__dirname, "../docs");
+const OUTPUT_PATH = path.resolve(__dirname, "../docs-js");
+const converter = new showdown.Converter({
+  noHeaderId: true,
+  simplifiedAutoLink: true,
+  strikethrough: true,
+  tables: true,
+  simpleLineBreaks: true,
+  extensions: [showdownHighlight],
+});
+const lineBreakReg = /[\r|\n|\t]/g;
+
+const removeLineBreakCharacter = (content) => content.replace(lineBreakReg, "");
+const getFileName = (name) => {
+  return name.toLowerCase();
+};
+const readFileNames = () => {
+  return new Promise((resolve, reject) => {
+    let fileNames = fs.readdirSync(DOC_PATH);
+    fileNames = fileNames.filter((fileName) => fileName.endsWith(".md"));
+    if (fileNames.length === 0) {
+      return reject(new Error("No files found! make sure you have A 'md' file."));
+    }
+    return resolve(fileNames);
+  });
+};
+
+const readFiles = (fileNames) => {
+  return new Promise((resolve, reject) => {
+    const files = [];
+    fileNames.forEach((fileName) => {
+      const filePath = path.resolve(DOC_PATH, fileName);
+      if (!fs.existsSync(filePath)) {
+        return reject(new Error(`Oh No!, Something bad happend,\nDo you really have a file named "${fileName}" in directory:\n${DOC_PATH}`));
+      }
+      const content = fs.readFileSync(filePath, "utf-8");
+      files.push({
+        fileName,
+        content,
+      });
+    });
+    resolve(files);
+  });
+};
+
+const convertMDToTHML = (mds) => {
+  return new Promise((resolve, reject) => {
+    const htmls = [];
+    mds.forEach(({ content, fileName }) => {
+      const html = converter.makeHtml(content);
+      htmls.push({
+        fileName,
+        content: removeLineBreakCharacter(html),
+      });
+    });
+    resolve(htmls);
+  });
+};
+
+const ensureOutputDir = () => {
+  if (!fs.existsSync(OUTPUT_PATH)) fs.mkdirSync(OUTPUT_PATH);
+};
+
+const getHTMLStructure = (html) => {
+  const $ = cheerio.load(html);
+  return {
+    title: $("h2").text(),
+    keywords: "",
+    description: "",
+    html,
+    tags: [],
+  };
+};
+
+const output = (htmls) => {
+  ensureOutputDir();
+  return new Promise((resolve, reject) => {
+    const manifest = {};
+    htmls.forEach(({ fileName, content }) => {
+      const htmlObj = getHTMLStructure(content);
+      const key = fileName.replace(/\.md/, "");
+      manifest[key] = htmlObj;
+    });
+    const filePath = path.resolve(OUTPUT_PATH, `html-manifest.json`);
+
+    fs.writeFileSync(filePath, JSON.stringify(manifest));
+    resolve();
+  });
+};
+
+const start = async () => {
+  logger.info("Start to build HTML files");
+  try {
+    const fileNames = await readFileNames();
+    const files = await readFiles(fileNames);
+    const HTMLs = await convertMDToTHML(files);
+    await output(HTMLs);
+    logger.success("Done");
+  } catch (error) {
+    logger.info("\r\n");
+    logger.error(error.message);
+    logger.info("\r\n");
+  }
+};
+
+start();
