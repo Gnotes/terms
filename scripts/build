@@ -11,7 +11,7 @@ const logger = require("./log");
 // const builder = require("./export-template");
 
 const DOC_PATH = path.resolve(__dirname, "../docs");
-const OUTPUT_PATH = path.resolve(__dirname, "../docs-js");
+const OUTPUT_PATH = path.resolve(__dirname, "../src/assets");
 const converter = new showdown.Converter({
   noHeaderId: true,
   simplifiedAutoLink: true,
@@ -93,7 +93,7 @@ const output = (htmls) => {
       const key = fileName.replace(/\.md/, "");
       manifest[key] = htmlObj;
     });
-    const filePath = path.resolve(OUTPUT_PATH, `html-manifest.json`);
+    const filePath = path.resolve(OUTPUT_PATH, `database.json`);
 
     fs.writeFileSync(filePath, JSON.stringify(manifest));
     resolve();
