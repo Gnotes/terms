@@ -1,6 +1,6 @@
 ## Terms
 
-Terminology glossaries for kinds of indutry.
+Terminology glossaries for kinds of industry.
 
 ### Contents
 
