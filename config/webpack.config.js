@@ -32,10 +32,12 @@ module.exports = (mode) => {
     module: {
       rules: [
         {
-          test: /\.(ts|tsx|js)$/,
-          use: {
-            loader: "babel-loader",
-          },
+          test: /\.(jsx|js)$/,
+          use: ["babel-loader"],
+        },
+        {
+          test: /\.(ts|tsx)$/,
+          use: ["babel-loader", "ts-loader"],
         },
         {
           test: /\.(css|scss)$/,

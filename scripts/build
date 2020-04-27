@@ -74,14 +74,31 @@ const ensureOutputDir = () => {
 };
 
 const getHTMLStructure = (html) => {
-  const $ = cheerio.load(html);
-  return {
-    title: $("h2").text(),
-    keywords: "",
-    description: "",
-    html,
-    tags: [],
-  };
+  const headerReg = /\<h\d\>.*\<\/h\d\>/g;
+  const htmlWithoutHead = html.replace(headerReg, "");
+  const sections = htmlWithoutHead
+    .split("</blockquote>")
+    .filter((it) => it !== "")
+    .map((it) => it + "</blockquote>");
+  const items = sections.map((section) => {
+    const $ = cheerio.load(section);
+    const shortName = $("ul li").text();
+    const [fullNameZH, fullNameEN] = $("ul+p")
+      .text()
+      .split(":")
+      .map((name) => name.trim());
+    const descriptions = $("blockquote p")
+      .text()
+      .split("    ");
+    return {
+      shortName,
+      fullNameZH,
+      fullNameEN,
+      descriptions,
+    };
+  });
+
+  return items;
 };
 
 const output = (htmls) => {
@@ -93,7 +110,7 @@ const output = (htmls) => {
       const key = fileName.replace(/\.md/, "");
       manifest[key] = htmlObj;
     });
-    const filePath = path.resolve(OUTPUT_PATH, `database.json`);
+    const filePath = path.resolve(OUTPUT_PATH, `terms.json`);
 
     fs.writeFileSync(filePath, JSON.stringify(manifest));
     resolve();
