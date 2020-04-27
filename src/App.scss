@@ -1,11 +1,26 @@
-.App {
-  text-align: center;
+/*最大1200px*/
+@media screen and (min-width: 1200px) {
+  .App {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
 }
-.App-header {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+
+@media screen and (min-width: 800px) and (max-width: 1199px) {
+  .App {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+}
+@media screen and (max-width: 800px) {
+  .App {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+
+.App {
+  .terms-wrapper {
+    padding-top: 90px;
+  }
 }

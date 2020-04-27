@@ -874,6 +874,11 @@
   resolved "http://r.cnpmjs.org/@types/anymatch/download/@types/anymatch-1.3.1.tgz#336badc1beecb9dacc38bea2cf32adf627a8421a"
   integrity sha1-M2utwb7sudrMOL6izzKt9ieoQho=
 
+"@types/classnames@^2.2.10":
+  version "2.2.10"
+  resolved "http://r.cnpmjs.org/@types/classnames/download/@types/classnames-2.2.10.tgz#cc658ca319b6355399efc1f5b9e818f1a24bf999"
+  integrity sha1-zGWMoxm2NVOZ78H1uegY8aJL+Zk=
+
 "@types/color-name@^1.1.1":
   version "1.1.1"
   resolved "http://r.cnpmjs.org/@types/color-name/download/@types/color-name-1.1.1.tgz#1c1261bbeaa10a8055bbc5d8ab84b7b2afc846a0"
@@ -897,6 +902,11 @@
   version "5.0.0"
   resolved "http://r.cnpmjs.org/@types/html-minifier-terser/download/@types/html-minifier-terser-5.0.0.tgz#7532440c138605ced1b555935c3115ddd20e8bef"
   integrity sha1-dTJEDBOGBc7RtVWTXDEV3dIOi+8=
+
+"@types/lunr@^2.3.3":
+  version "2.3.3"
+  resolved "http://r.cnpmjs.org/@types/lunr/download/@types/lunr-2.3.3.tgz#ec985618fd2712c010f8edab4f1ae7784ad7c583"
+  integrity sha1-7JhWGP0nEsAQ+O2rTxrneErXxYM=
 
 "@types/minimatch@*":
   version "3.0.3"
@@ -1846,6 +1856,11 @@ class-utils@^0.3.5:
     define-property "^0.2.5"
     isobject "^3.0.0"
     static-extend "^0.1.1"
+
+classnames@^2.2.6:
+  version "2.2.6"
+  resolved "http://r.cnpmjs.org/classnames/download/classnames-2.2.6.tgz#43935bffdd291f326dad0a205309b38d00f650ce"
+  integrity sha1-Q5Nb/90pHzJtrQogUwmzjQD2UM4=
 
 clean-css@^4.2.3:
   version "4.2.3"
@@ -4104,6 +4119,11 @@ lru-cache@^5.1.1:
   integrity sha1-HaJ+ZxAnGUdpXa9oSOhH8B2EuSA=
   dependencies:
     yallist "^3.0.2"
+
+lunr@^2.3.8:
+  version "2.3.8"
+  resolved "http://r.cnpmjs.org/lunr/download/lunr-2.3.8.tgz#a8b89c31f30b5a044b97d2d28e2da191b6ba2072"
+  integrity sha1-qLicMfMLWgRLl9LSji2hkba6IHI=
 
 make-dir@^2.0.0, make-dir@^2.1.0:
   version "2.1.0"

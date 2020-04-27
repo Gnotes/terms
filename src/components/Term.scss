@@ -1,37 +1,65 @@
 .term-item {
   box-sizing: border-box;
+  position: relative;
   padding: 10px;
   border-radius: 5px;
   border: 1px solid #f0f0f0;
+  transition: all 0.5s;
+  display: flex;
+  align-items: center;
   &:hover {
     cursor: pointer;
     box-shadow: 0 1px 2px -2px rgba(0, 0, 0, 0.16), 0 3px 6px 0 rgba(0, 0, 0, 0.12), 0 5px 12px 4px rgba(0, 0, 0, 0.09);
     border-color: transparent;
   }
-
-  .term-head {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    .short-name {
-      display: inline-block;
-      width: 40px;
-      height: 40px;
-      overflow: hidden;
-      border-radius: 100%;
-      text-transform: uppercase;
-    }
-    .full-name-en {
-    }
-    .belong-to {
-      text-transform: capitalize;
-    }
+  & + & {
+    margin-top: 10px;
   }
-  .term-body {
-    .full-name-zh {
-    }
-    .description {
-      .description-item {
+}
+
+.term-col {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+}
+
+@media screen and (min-width: 800px) {
+}
+
+.col-left,
+.col-right,
+.col-center {
+  display: inline-flex;
+}
+.short-name {
+  font-size: 30px;
+  font-weight: bold;
+  white-space: nowrap;
+  min-width: 60px;
+}
+.col-center {
+  flex-direction: column;
+  align-items: flex-start;
+}
+.full-name-en,
+.full-name-zh {
+  font-size: 12px;
+  margin-left: 10px;
+  color: #ccc;
+}
+.col-right {
+  flex: 1;
+  overflow: hidden;
+  margin-left: 20px;
+  font-size: 14px;
+  color: #402121;
+  .description {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    .desc {
+      & + .desc {
+        margin-top: 5px;
       }
     }
   }

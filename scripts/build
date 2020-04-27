@@ -73,7 +73,7 @@ const ensureOutputDir = () => {
   if (!fs.existsSync(OUTPUT_PATH)) fs.mkdirSync(OUTPUT_PATH);
 };
 
-const getHTMLStructure = (html) => {
+const getHTMLStructure = (belongTo, html, termNames) => {
   const headerReg = /\<h\d\>.*\<\/h\d\>/g;
   const htmlWithoutHead = html.replace(headerReg, "");
   const sections = htmlWithoutHead
@@ -90,7 +90,9 @@ const getHTMLStructure = (html) => {
     const descriptions = $("blockquote p")
       .text()
       .split("    ");
+    termNames.push(shortName.toUpperCase());
     return {
+      belongTo,
       shortName,
       fullNameZH,
       fullNameEN,
@@ -105,14 +107,17 @@ const output = (htmls) => {
   ensureOutputDir();
   return new Promise((resolve, reject) => {
     const manifest = {};
+    const termNames = [];
     htmls.forEach(({ fileName, content }) => {
-      const htmlObj = getHTMLStructure(content);
       const key = fileName.replace(/\.md/, "");
+      const htmlObj = getHTMLStructure(key, content, termNames);
       manifest[key] = htmlObj;
     });
     const filePath = path.resolve(OUTPUT_PATH, `terms.json`);
+    const namesFilePath = path.resolve(OUTPUT_PATH, `names.json`);
 
     fs.writeFileSync(filePath, JSON.stringify(manifest));
+    fs.writeFileSync(namesFilePath, JSON.stringify(termNames));
     resolve();
   });
 };
