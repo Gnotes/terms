@@ -15,6 +15,13 @@
   & + & {
     margin-top: 10px;
   }
+  &.collpase {
+    .description {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
 }
 
 .term-col {
@@ -23,7 +30,21 @@
   align-items: center;
 }
 
-@media screen and (min-width: 800px) {
+@media screen and (max-width: 500px) {
+  .term-item {
+    display: block;
+    .col-left,
+    .col-center {
+      vertical-align: middle;
+    }
+    .col-right {
+      margin-top: 10px;
+      margin-left: 0;
+    }
+    &.collpase {
+      display: flex;
+    }
+  }
 }
 
 .col-left,
@@ -54,9 +75,6 @@
   font-size: 14px;
   color: #402121;
   .description {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
     .desc {
       & + .desc {
         margin-top: 5px;

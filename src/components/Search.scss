@@ -1,6 +1,6 @@
 .search {
   position: fixed;
-  padding: 20px 0;
+  padding: 20px 10px;
   background-color: #fff;
   top: 20vh;
   left: 0;
@@ -22,7 +22,8 @@
     border-radius: 2px;
     overflow: hidden;
     .input {
-      width: 60vw;
+      flex: 1;
+      width: 100vw;
       max-width: 400px;
       height: 100%;
       font-size: 16px;
