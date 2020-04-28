@@ -3,14 +3,93 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta
-      name="description"
-      content="Terminology glossaries for kinds of industry."
-    />
-    <title>Terms</title>
+    <meta name="description" content="Terminology glossaries for kinds of industry." />
+    <meta name="author" content="xing.he" />
+    <meta name="keywords" content="term,terms,terminology,glossary,glossaries" />
+    <meta name="robots" content="all" />
+    <meta name="generator" content="react" />
+    <meta name="copyright" content="xing.he" />
+    <title>Terms - Easier to understand professional terminology.</title>
+    <style type="text/css">
+      .wrap {
+        position: absolute;
+        top:30vh;
+        left:0;
+        right:0;
+        text-align:center;
+      }
+      .k-ball-holder3 {
+       display: inline-block;
+      }
+      .k-ball7a {
+        border:0;
+        margin:0;
+        width:16px;
+        height:16px;
+        position:absolute;
+        border-radius:50%;
+        animation:k-loadingO 2s ease infinite;
+        background:#f3b97a;
+        animation-delay:-1.5s
+      }
+      .k-ball7b {
+        border:0;
+        margin:0;
+        width:16px;
+        height:16px;
+        position:absolute;
+        border-radius:50%;
+        animation:k-loadingO 2s ease infinite;
+        background:#9fd7ec;
+        animation-delay:-1s
+      }
+      .k-ball7c {
+        border:0;
+        margin:0;
+        width:16px;
+        height:16px;
+        position:absolute;
+        border-radius:50%;
+        animation:k-loadingO 2s ease infinite;
+        background:#b5b6ff;
+        animation-delay:-0.5s
+      }
+      .k-ball7d {
+        border:0;
+        margin:0;
+        width:16px;
+        height:16px;
+        position:absolute;
+        border-radius:50%;
+        animation:k-loadingO 2s ease infinite;
+        background:#ec6262;
+      }
+      @keyframes k-loadingO {
+        0%,100% {
+        transform:translate(0)
+      }
+      25% {
+        transform:translate(160%)
+      }
+      50% {
+        transform:translate(160%,160%)
+      }
+      75% {
+        transform:translate(0,160%)
+      }
+    </style>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
+    <div id="root">
+      <div class="loading wrap">
+        <div class="k-ball-holder3">
+          <div class="k-ball7a"></div>
+          <div class="k-ball7b"></div>
+          <div class="k-ball7c"></div>
+          <div class="k-ball7d"></div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

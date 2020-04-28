@@ -3,13 +3,18 @@ const fs = require("fs");
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const postcssNormalize = require("postcss-normalize");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const cliPath = __dirname;
+const IS_DEV = process.env.NODE_ENV === "development";
 const appRootPath = path.resolve(cliPath, "..");
 
-module.exports = (mode) => {
+module.exports = () => {
   return {
-    mode: mode || "development",
-    entry: path.resolve(appRootPath, "src/index"),
+    mode: IS_DEV ? "development" : "production",
+    entry: {
+      main: path.resolve(appRootPath, "src/index"),
+      vendor: ["lunr"],
+    },
     output: {
       path: path.resolve(appRootPath, "dist"),
     },
@@ -41,7 +46,7 @@ module.exports = (mode) => {
         {
           test: /\.(css|scss)$/,
           use: [
-            "style-loader",
+            MiniCssExtractPlugin.loader,
             "css-loader",
             "sass-loader",
             {
@@ -63,11 +68,35 @@ module.exports = (mode) => {
         },
       ],
     },
+    optimization: {
+      splitChunks: {
+        chunks: "async",
+        minSize: 30000,
+        maxSize: 0,
+        minChunks: 1,
+        maxAsyncRequests: 6,
+        maxInitialRequests: 4,
+        automaticNameDelimiter: "~",
+        cacheGroups: {
+          defaultVendors: {
+            test: /[\\/]node_modules[\\/]/,
+            priority: -10,
+          },
+          vendor: {
+            name: "vendor",
+          },
+        },
+      },
+    },
     plugins: [
       new HtmlWebpackPlugin({
         favicon: path.resolve(appRootPath, "public/favicon.ico"),
         meta: { appName: "Terms" },
         template: path.resolve(appRootPath, "public/index.html"),
+      }),
+      new MiniCssExtractPlugin({
+        filename: "[name].css",
+        chunkFilename: "[id].css",
       }),
     ],
   };
