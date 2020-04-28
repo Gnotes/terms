@@ -1,18 +1,23 @@
-import React, { useCallback, useState } from "react";
-import Terms from "./assets/terms.json";
+import React, { useState, useEffect } from "react";
 import Search from "./components/Search";
 import Term, { ITermProps } from "./components/Term";
 import DB from "./db";
 import "./App.scss";
 
-const termsToArray = () => {
-  return Object.entries(Terms);
-};
-
 function App() {
   const [terms, setTerms] = useState();
-  const db = new DB(Terms);
+  const [db, setDB] = useState();
+  useEffect(() => {
+    import("./assets/terms.json")
+      .then(({ default: Terms }) => {
+        const db = new DB(Terms);
+        setDB(db);
+      })
+      .catch(() => {});
+  }, []);
+
   const onSearch = (keyword: string) => {
+    if (!db) return null;
     const { code, message, data } = db.search(keyword);
     if (code === 200) {
       setTerms(data);

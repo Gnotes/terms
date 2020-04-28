@@ -13,7 +13,6 @@ module.exports = () => {
     mode: IS_DEV ? "development" : "production",
     entry: {
       main: path.resolve(appRootPath, "src/index"),
-      vendor: ["lunr"],
     },
     output: {
       path: path.resolve(appRootPath, "dist"),
@@ -70,22 +69,7 @@ module.exports = () => {
     },
     optimization: {
       splitChunks: {
-        chunks: "async",
-        minSize: 30000,
-        maxSize: 0,
-        minChunks: 1,
-        maxAsyncRequests: 6,
-        maxInitialRequests: 4,
-        automaticNameDelimiter: "~",
-        cacheGroups: {
-          defaultVendors: {
-            test: /[\\/]node_modules[\\/]/,
-            priority: -10,
-          },
-          vendor: {
-            name: "vendor",
-          },
-        },
+        chunks: "all",
       },
     },
     plugins: [
