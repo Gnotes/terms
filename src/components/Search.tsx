@@ -30,7 +30,7 @@ const Search: React.FC<ISearchProps> = ({ onSearch, onClear }) => {
       })}
     >
       <div className="input-group">
-        <input className="input" value={keyword} onChange={onInputChange} placeholder="请输入英文术语进行检索" />
+        <input className="input" value={keyword} onChange={onInputChange} placeholder="请输入英文关键术语进行检索" />
         <div className="button button-search" onClick={onClickButton}>
           Search
         </div>
