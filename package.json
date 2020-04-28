@@ -1,13 +1,12 @@
 {
   "name": "terms",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Terminology glossaries for kinds of industry.",
-  "directories": {
-    "doc": "docs"
-  },
   "scripts": {
-    "build": "node ./scripts/build",
-    "start": "webpack-dev-server --config ./config/webpack.config.js"
+    "doc": "node ./scripts/build-doc",
+    "build": "cross-env NODE_ENV=production webpack --config ./config/webpack.config.js",
+    "publish": "gh-pages -d dist",
+    "start": "cross-env NODE_ENV=development webpack-dev-server --config ./config/webpack.config.js"
   },
   "repository": {
     "type": "git",
@@ -44,8 +43,10 @@
     "babel-loader": "^8.1.0",
     "cheerio": "^1.0.0-rc.3",
     "classnames": "^2.2.6",
+    "cross-env": "^7.0.2",
     "css-loader": "^3.5.3",
     "file-loader": "^6.0.0",
+    "gh-pages": "^2.2.0",
     "html-webpack-plugin": "^4.2.0",
     "node-sass": "^4.14.0",
     "object-assign": "^4.1.1",

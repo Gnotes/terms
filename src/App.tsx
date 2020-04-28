@@ -1,8 +1,5 @@
 import React, { useCallback, useState } from "react";
-import logo from "./logo.svg";
 import Terms from "./assets/terms.json";
-import Names from "./assets/names.json";
-import Belong from "./components/Belong";
 import Search from "./components/Search";
 import Term, { ITermProps } from "./components/Term";
 import DB from "./db";

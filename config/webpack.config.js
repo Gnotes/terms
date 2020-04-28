@@ -8,7 +8,7 @@ const appRootPath = path.resolve(cliPath, "..");
 
 module.exports = (mode) => {
   return {
-    mode: "development",
+    mode: mode || "development",
     entry: path.resolve(appRootPath, "src/index"),
     output: {
       path: path.resolve(appRootPath, "dist"),
@@ -22,7 +22,6 @@ module.exports = (mode) => {
       https: false, // true for self-signed, object for cert authority
     },
     resolve: {
-      //   extensions: [".tsx", "ts", ".json", ".jsx", ".css"],
       extensions: [".wasm", ".mjs", ".js", ".jsx", ".ts", ".tsx", ".json"],
       alias: {
         "@": path.resolve(appRootPath, "src"),
