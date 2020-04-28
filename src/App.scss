@@ -24,3 +24,17 @@
     padding-top: 90px;
   }
 }
+
+.contack-info {
+  margin-top: 25vh;
+  text-align: center;
+  font-size: 12px;
+  .faq {
+    color: #ccc;
+    a {
+      color: #475ab9;
+      text-decoration: none;
+      cursor: pointer;
+    }
+  }
+}

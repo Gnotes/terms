@@ -31,6 +31,15 @@ function App() {
             return <Term {...term} key={index} />;
           })}
       </div>
+      <div className="contack-info">
+        <div className="faq">
+          没有找到？
+          <a href="https://github.com/Gnotes/terms/pulls" target="_blank">
+            欢迎 PR
+          </a>
+        </div>
+        <div className="copyright"> Gnotes &copy; all rights reserved</div>
+      </div>
     </div>
   );
 }
