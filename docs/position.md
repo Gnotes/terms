@@ -53,3 +53,19 @@
 首席游戏官: Chief Game Officer
 
 > 这个主要是游戏公司或网吧里设置的岗位或系统，一般企业里没有这样的岗。当然，也不排除一些前卫的公司针对 90 后特意设置这样的岗位
+
+- GM
+
+总经理: General Manager
+
+- VP
+
+副总裁: Vice President
+
+- FVP
+
+第一副总裁: First Vice President
+
+- AVP
+
+副总裁助: Assistant Vice President
