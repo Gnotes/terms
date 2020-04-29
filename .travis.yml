@@ -17,5 +17,6 @@ deploy:
   email: 1245036094@qq.com
   name: xing.he
   keep_history: true # 默认是 --force 模式，这里保留记录
+  commit_message: Deploy %{project_name} to %{target_branch} on Travis
   on:
     branch: master
