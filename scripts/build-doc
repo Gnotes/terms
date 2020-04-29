@@ -77,9 +77,9 @@ const getHTMLStructure = (belongTo, html, termNames) => {
   const headerReg = /\<h\d\>.*\<\/h\d\>/g;
   const htmlWithoutHead = html.replace(headerReg, "");
   const sections = htmlWithoutHead
-    .split("</blockquote>")
+    .split("<ul>")
     .filter((it) => it !== "")
-    .map((it) => it + "</blockquote>");
+    .map((it) => "<ul>" + it);
   const items = sections.map((section) => {
     const $ = cheerio.load(section);
     const shortName = $("ul li").text();
@@ -89,7 +89,8 @@ const getHTMLStructure = (belongTo, html, termNames) => {
       .map((name) => name.trim());
     const descriptions = $("blockquote p")
       .text()
-      .split("    ");
+      .split("    ")
+      .filter((it) => it !== "");
     termNames.push(shortName.toUpperCase());
     return {
       belongTo,
