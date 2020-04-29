@@ -1,6 +1,5 @@
 const path = require("path");
-const fs = require("fs");
-const webpack = require("webpack");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const postcssNormalize = require("postcss-normalize");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
@@ -16,6 +15,8 @@ module.exports = () => {
     },
     output: {
       path: path.resolve(appRootPath, "dist"),
+      filename: "[name].[hash:8].js",
+      chunkFilename: "[name].[chunkhash:8].js",
     },
     devServer: {
       port: 3000,
@@ -73,14 +74,15 @@ module.exports = () => {
       },
     },
     plugins: [
+      new CleanWebpackPlugin(),
       new HtmlWebpackPlugin({
         favicon: path.resolve(appRootPath, "public/favicon.ico"),
         meta: { appName: "Terms" },
         template: path.resolve(appRootPath, "public/index.html"),
       }),
       new MiniCssExtractPlugin({
-        filename: "[name].css",
-        chunkFilename: "[id].css",
+        filename: "[name].[contenthash:8].css",
+        chunkFilename: "[id].[contenthash:8].css",
       }),
     ],
   };
