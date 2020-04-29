@@ -58,6 +58,10 @@
 
 总经理: General Manager
 
+- VGM
+
+副总经理: Vice General Manager
+
 - VP
 
 副总裁: Vice President
