@@ -8,3 +8,7 @@ Terminology glossaries for kinds of industry.
 - [Test](./docs/test.md)
 - [Position](./docs/position.md)
 - [Program](./docs/program.md)
+
+## 参考
+
+- [Travis 部署 gh-pages 配置](https://docs.travis-ci.com/user/deployment/pages/)
