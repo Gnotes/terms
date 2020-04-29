@@ -73,3 +73,30 @@
 - AVP
 
 副总裁助: Assistant Vice President
+
+- HRVP
+
+人力资源副总裁: Human Resource Vice President
+
+> 指人力资源副总裁（Human Resource Vice President），管理岗位，直接向总裁汇报工作，往往是一些大型的公司或者人力资源体系比较健全和完善的公司才会设置的岗位，这个岗位的设置意味着公司人力资源的定位从原本孤立的某个支持、执行类部门上升到具有战略高度的部门。
+
+- HRBP
+
+人力资源业务合作伙伴: Human Resource Business Partner
+
+> HRBP(HR BUSINESS PARTNER)实际上就是企业派驻到各个业务或事业部的人力资源管理者，主要协助各业务单元高层及经理在员工发展、人才发掘、能力培养等方面的工作  
+> 其主要工作内容是负责公司的人力资源管理政策体系、制度规范在各业务单元的推行落实，协助业务单元完善人力资源管理工作，并帮助培养和发展业务单元各级干部的人力资源管理能力
+
+- HRD
+
+人力资源总监: Human Resource Director
+
+> HRD 的核心内容包括培训开发、组织发展和职业生涯规划三个部分
+
+- HRM
+
+人力资源经理: Human Resource Manager
+
+- CHO
+
+首席人力资源官: Chief Human Resource Officer
