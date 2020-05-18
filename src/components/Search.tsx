@@ -23,6 +23,12 @@ const Search: React.FC<ISearchProps> = ({ onSearch, onClear }) => {
     onSearch(keyword);
     setActive(true);
   };
+
+  const onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.keyCode === 13) {
+      onClickButton();
+    }
+  };
   return (
     <div
       className={classNames("search", {
@@ -30,7 +36,7 @@ const Search: React.FC<ISearchProps> = ({ onSearch, onClear }) => {
       })}
     >
       <div className="input-group">
-        <input className="input" value={keyword} onChange={onInputChange} placeholder="请输入英文关键术语进行检索" />
+        <input className="input" value={keyword} onChange={onInputChange} placeholder="请输入英文关键术语进行检索" onKeyDown={onKeyDown} />
         <div className="button button-search" onClick={onClickButton}>
           Search
         </div>
