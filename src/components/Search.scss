@@ -3,18 +3,18 @@
   position: fixed;
   padding: 20px 10px;
   background-color: #fff;
-  top: 20vh;
+  transform: translateY(20vh);
   left: 0;
   right: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   transition-property: all;
-  transition-duration: 0.3s;
-  transition-timing-function: ease-out;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-in;
   transition-delay: 0s;
   &.active {
-    top: 0;
+    transform: translateY(0vh);
   }
   .input-group {
     display: inline-flex;
